@@ -1,0 +1,10 @@
+{
+  "name": "the-ai-pipe-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter website dev",
+    "build": "pnpm --filter website build",
+    "preview": "pnpm --filter website preview",
+    "astro": "pnpm --filter website astro"
+  }
+} 
