@@ -3,7 +3,7 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 
-const resend = new Resend(import.meta.env.PUBLIC_RESEND_API_KEY);
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   const formData = await request.formData();
@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const { data, error } = await resend.emails.send({
       from: `The AI Pipe Form <contact@theaipipe.com>`,
-      to: import.meta.env.PUBLIC_CONTACT_EMAIL,
+      to: import.meta.env.CONTACT_EMAIL,
       subject: `New message from ${name}`,
       reply_to: email,
       html: `<p>You have a new contact form submission from:</p>

@@ -2,11 +2,14 @@
 interface Props {
   as?: 'button' | 'a';
   href?: string;
+  type?: 'button' | 'submit' | 'reset' | null;
   variant?: 'primary' | 'secondary';
   class?: string;
 }
 
-const { as: Component = 'a', href, variant = 'primary', class: className } = Astro.props;
+const { as, href, type, variant = 'primary', class: className } = Astro.props;
+
+const Component = as || (href ? 'a' : 'button');
 
 const baseClasses = "inline-block rounded-md px-8 py-3 text-sm font-medium transition focus:outline-none focus:ring focus:ring-accent";
 
@@ -18,6 +21,6 @@ const variantClasses = {
 const classes = [baseClasses, variantClasses[variant], className].join(' ');
 ---
 
-<Component class={classes} href={href}>
+<Component class={classes} href={href} type={type}>
   <slot />
 </Component> 
