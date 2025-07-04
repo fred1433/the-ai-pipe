@@ -1,4 +1,0 @@
-name = "the-ai-pipe-site"
-pages_build_output_dir = "./website/dist"
-account_id = "XXXXXX"
-route = "https://theaipipe.com/*" 
