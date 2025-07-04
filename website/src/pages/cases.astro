@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Case Studies | The AI Pipe">
+  <div class="container mx-auto max-w-screen-xl px-4 py-32">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+        Proven Success, Real-World Impact.
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-neutral-300">
+        We don't just build pipelines; we build growth engines. Explore how we've helped businesses like yours automate complexity, unlock efficiency, and achieve their strategic goals.
+      </p>
+    </div>
+
+    <div class="mt-24 grid grid-cols-1 gap-16 lg:grid-cols-3">
+      <!-- Case Study 1 -->
+      <div class="flex flex-col rounded-lg bg-neutral-900/50 ring-1 ring-white/10 p-8">
+        <h3 class="text-2xl font-semibold text-white">E-commerce Inventory Automation</h3>
+        <p class="mt-4 text-neutral-300">
+          A rapidly growing online retailer was struggling with manual inventory updates, leading to stockouts and lost sales. We built an AI-powered pipeline that synced their warehouse management system with their Shopify store in real-time.
+        </p>
+        <div class="mt-6 space-y-2">
+          <p class="font-semibold text-indigo-400">Results:</p>
+          <ul class="list-disc list-inside text-neutral-300">
+            <li>99.9% inventory accuracy</li>
+            <li>40% reduction in manual data entry</li>
+            <li>15% increase in sales due to fewer stockouts</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Case Study 2 -->
+      <div class="flex flex-col rounded-lg bg-neutral-900/50 ring-1 ring-white/10 p-8">
+        <h3 class="text-2xl font-semibold text-white">Automated Financial Reporting</h3>
+        <p class="mt-4 text-neutral-300">
+          A financial services firm needed to consolidate data from multiple sources to generate complex quarterly reports. The process was slow and prone to human error. Our solution automated the entire data aggregation and report generation workflow.
+        </p>
+        <div class="mt-6 space-y-2">
+          <p class="font-semibold text-indigo-400">Results:</p>
+          <ul class="list-disc list-inside text-neutral-300">
+            <li>80 hours saved per quarter</li>
+            <li>Reduced reporting errors to near-zero</li>
+            <li>Enabled faster, data-driven decision-making</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Case Study 3 -->
+      <div class="flex flex-col rounded-lg bg-neutral-900/50 ring-1 ring-white/10 p-8">
+        <h3 class="text-2xl font-semibold text-white">Intelligent Customer Support Triage</h3>
+        <p class="mt-4 text-neutral-300">
+          A SaaS company was overwhelmed with support tickets. We implemented an AI pipe that used Natural Language Processing (NLP) to analyze, categorize, and route incoming tickets to the right support agent automatically.
+        </p>
+        <div class="mt-6 space-y-2">
+          <p class="font-semibold text-indigo-400">Results:</p>
+          <ul class="list-disc list-inside text-neutral-300">
+            <li>50% faster first-response time</li>
+            <li>Improved agent specialization and efficiency</li>
+            <li>25% increase in customer satisfaction scores</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-24 text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Ready to build your success story?</h2>
+        <p class="mt-4 text-lg text-neutral-300">Let's discuss how we can tailor a solution for you.</p>
+        <div class="mt-8">
+            <Button href="/contact" variant="primary">Get in Touch</Button>
+        </div>
+    </div>
+
+  </div>
+</Layout> 

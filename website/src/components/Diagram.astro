@@ -1,0 +1,25 @@
+---
+const { diagram } = Astro.props;
+---
+<div class="mermaid-container flex justify-center items-center w-full p-4">
+    <pre class="mermaid h-auto">{diagram}</pre>
+</div>
+
+<script>
+  // This script will be processed by Astro and run on the client.
+  async function renderMermaid() {
+    // Dynamically import the mermaid library only when needed.
+    const mermaid = (await import('mermaid')).default;
+    // We don't want mermaid to start automatically, we will control it.
+    mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+    // Find all elements with the class "mermaid" and render them.
+    await mermaid.run();
+  }
+
+  // The 'astro:page-load' event fires on initial page load and after each page navigation.
+  // This is the correct event to use with Astro's View Transitions.
+  document.addEventListener('astro:page-load', renderMermaid);
+
+  // We also call it directly for the case where the script is loaded but the event has already fired.
+  renderMermaid();
+</script> 

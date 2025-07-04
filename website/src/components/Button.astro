@@ -1,0 +1,23 @@
+---
+interface Props {
+  as?: 'button' | 'a';
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const { as: Component = 'a', href, variant = 'primary', class: className } = Astro.props;
+
+const baseClasses = "inline-block rounded-md px-8 py-3 text-sm font-medium transition focus:outline-none focus:ring focus:ring-accent";
+
+const variantClasses = {
+  primary: "text-white bg-gradient-to-r from-primary to-accent bg-[length:200%_200%] animate-background-pan hover:opacity-90 active:opacity-80",
+  secondary: "border border-neutral-300 text-neutral-100 hover:bg-neutral-800 active:bg-neutral-700"
+};
+
+const classes = [baseClasses, variantClasses[variant], className].join(' ');
+---
+
+<Component class={classes} href={href}>
+  <slot />
+</Component> 

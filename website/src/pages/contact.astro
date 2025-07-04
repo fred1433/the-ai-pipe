@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Contact Us | The AI Pipe">
+  <div class="container mx-auto max-w-screen-xl px-4 py-32">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+        Let's Build Together.
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-neutral-300">
+        Have a project in mind, a question about our process, or just want to say hello? We'd love to hear from you. Reach out via the form below or email us directly.
+      </p>
+      <p class="mt-8">
+        <a href="mailto:contact@theaipipe.com" class="text-xl font-semibold text-indigo-400 hover:text-indigo-300">
+          contact@theaipipe.com
+        </a>
+      </p>
+    </div>
+
+    <p class="mt-4 text-lg leading-8 text-neutral-300 max-w-2xl mx-auto">
+      Have a question or a project in mind? We'd love to hear from you.
+    </p>
+
+    <div id="form-container" class="mt-12">
+      <form id="contact-form" class="max-w-xl mx-auto">
+        <div class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium leading-6 text-neutral-200">Full Name</label>
+            <div class="mt-2">
+              <input type="text" name="name" id="name" autocomplete="name" required class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold leading-6 text-white">Email</label>
+            <input type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-semibold leading-6 text-white">Message</label>
+            <textarea name="message" id="message" rows="4" required class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>
+        <div class="mt-8">
+          <Button type="submit">Send Message</Button>
+        </div>
+      </form>
+      <div id="response-message" class="mt-6 text-center"></div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const responseMessage = document.getElementById('response-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!responseMessage) return;
+    
+    responseMessage.textContent = 'Sending...';
+    responseMessage.className = 'mt-6 text-center text-blue-400';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        responseMessage.textContent = 'Message sent successfully! Thank you.';
+        responseMessage.className = 'mt-6 text-center text-green-400';
+        form.reset();
+      } else {
+        responseMessage.textContent = result.message || 'An error occurred. Please try again.';
+        responseMessage.className = 'mt-6 text-center text-red-400';
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      responseMessage.textContent = 'An unexpected error occurred. Please check the console.';
+      responseMessage.className = 'mt-6 text-center text-red-400';
+    }
+  });
+</script> 

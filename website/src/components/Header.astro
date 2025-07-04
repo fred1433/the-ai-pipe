@@ -1,0 +1,46 @@
+---
+const links = [
+  { href: '/solutions', text: 'Solutions' },
+  { href: '/cases', text: 'Use Cases' },
+  { href: '/about', text: 'About' },
+  { href: '/contact', text: 'Contact' },
+];
+---
+<header class="absolute top-0 left-0 right-0 z-20">
+  <div class="container mx-auto max-w-screen-xl px-4 py-6 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold text-white">
+      The AI Pipe
+    </a>
+    <nav class="hidden md:flex space-x-8">
+      {links.map(link => (
+        <a href={link.href} class="text-neutral-300 hover:text-white transition">
+          {link.text}
+        </a>
+      ))}
+    </nav>
+    <button id="mobile-menu-button" class="md:hidden text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    </button>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 right-0 pt-20 bg-neutral-900/90 backdrop-blur-sm h-screen">
+    <nav class="flex flex-col items-center">
+      {links.map(link => (
+        <a href={link.href} class="block py-4 text-lg text-center text-neutral-200 hover:text-white transition">
+          {link.text}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    
+    button?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  });
+</script> 

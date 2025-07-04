@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Diagram from '../components/Diagram.astro';
+
+const highLevelDiagram = `
+flowchart TD
+    A([User / Trigger])
+    B[Webhook • API Call]
+
+    subgraph P[The AI Pipe™]
+        direction TB
+        C1([Data<br/>Ingestion])
+        C2([AI Processing<br/>& Reasoning])
+        C3([Automation<br/>Orchestration])
+        C1 --> C2 --> C3
+    end
+
+    D[External Apps<br/>& Services]
+    E[Dashboards<br/>/ Notifications]
+
+    A --> B --> P
+    C3 --> D
+    C3 --> E
+`;
+---
+
+<Layout title="Solutions | The AI Pipe">
+  <div class="container mx-auto max-w-screen-xl px-4 py-32 text-center">
+    <h1 class="text-4xl font-bold">Our Solutions</h1>
+    <p class="mt-4 max-w-2xl mx-auto text-lg text-neutral-300">
+      We build robust AI pipelines that connect your existing tools, automate complex workflows, and deliver actionable insights. Here's a high-level overview of how it works.
+    </p>
+    <div class="mt-12">
+      <!-- <Diagram diagram={highLevelDiagram} /> -->
+      <img src="/images/mermaid-chart.png" alt="High-level diagram of The AI Pipe architecture" class="block max-w-[323px] mx-auto h-auto rounded-lg shadow-lg" />
+    </div>
+  </div>
+</Layout> 
