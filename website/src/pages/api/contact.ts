@@ -24,7 +24,7 @@ export const POST: APIRoute = async ({ request }) => {
       from: `The AI Pipe Form <contact@theaipipe.com>`,
       to: import.meta.env.CONTACT_EMAIL,
       subject: `New message from ${name}`,
-      reply_to: email,
+      replyTo: email,
       html: `<p>You have a new contact form submission from:</p>
              <p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
