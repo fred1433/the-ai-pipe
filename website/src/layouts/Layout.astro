@@ -5,20 +5,73 @@ import '../styles/base.css';
 
 interface Props {
 	title: string;
+	description?: string;
+	ogImage?: string;
+	keywords?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "AI automation expert helping businesses streamline processes with custom AI solutions. Get your automation in 72 hours.",
+	ogImage = "/images/og-default.png",
+	keywords = "AI automation, business process automation, AI integration, data pipelines, workflow automation, AI consultant, custom AI solutions"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://theaipipe.com');
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="The AI Pipe - Automate your processes with AI in 72h" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="Frédéric - The AI Pipe" />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+		<meta property="og:site_name" content="The AI Pipe" />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(ogImage, canonicalURL)} />
+		
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap.xml" />
+		
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "ProfessionalService",
+				"name": "The AI Pipe",
+				"description": "AI automation expert helping businesses streamline processes with custom AI solutions",
+				"url": "https://theaipipe.com",
+				"logo": "https://theaipipe.com/favicon.svg",
+				"founder": {
+					"@type": "Person",
+					"name": "Frédéric",
+					"jobTitle": "AI & Automation Expert"
+				},
+				"areaServed": "Worldwide",
+				"serviceType": ["AI Integration", "Business Process Automation", "Custom AI Solutions"],
+				"priceRange": "$$",
+				"sameAs": []
+			})}
+		</script>
 	</head>
 	<body class="bg-neutral-900 text-neutral-100">
     <Header />
