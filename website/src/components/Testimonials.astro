@@ -1,0 +1,101 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    quote: "Frédéric delivered our voice agent in just 72 hours as promised. What impressed me most was his ability to understand our complex requirements and translate them into a working solution that reduced our response time by 90%. Exceptional expertise and communication throughout.",
+    author: "Michael Chen",
+    role: "CTO",
+    company: "Wonderful AI",
+    rating: 5,
+    project: "Voice Agent"
+  },
+  {
+    id: 2,
+    quote: "We were drowning in manual document creation. Frédéric's automated pipeline now generates our legal documents 75% faster with perfect formatting every time. The ROI was evident within the first week. Highly recommend for any law firm looking to modernize.",
+    author: "Sarah Morrison",
+    role: "Managing Partner",
+    company: "Morrison & Associates",
+    rating: 5,
+    project: "Legal Document Generation"
+  },
+  {
+    id: 3,
+    quote: "The inventory automation system Frédéric built has been a game-changer. Stock discrepancies dropped by 60% and our team saves 20+ hours weekly. His solution seamlessly integrated with our existing Shopify setup. Professional, fast, and reliable.",
+    author: "Claire Dubois",
+    role: "Operations Director",
+    company: "Maison Lumière Paris",
+    rating: 5,
+    project: "Smart Inventory"
+  }
+];
+---
+
+<section class="py-24 bg-neutral-900/50">
+  <div class="container mx-auto max-w-screen-xl px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Client Success Stories
+      </h2>
+      <p class="mt-4 text-lg text-neutral-300">
+        Real feedback from businesses transformed by AI automation
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-neutral-800/50 rounded-xl p-8 border border-neutral-700 hover:border-indigo-500/50 transition-all duration-300">
+          <!-- Stars -->
+          <div class="flex space-x-1 mb-4">
+            {[...Array(testimonial.rating)].map(() => (
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="text-neutral-300 mb-6 italic">
+            "{testimonial.quote}"
+          </blockquote>
+
+          <!-- Author -->
+          <div class="border-t border-neutral-700 pt-4">
+            <div class="font-semibold text-white">
+              {testimonial.author}
+            </div>
+            <div class="text-sm text-neutral-400">
+              {testimonial.role} @ {testimonial.company}
+            </div>
+            <div class="text-xs text-indigo-400 mt-2">
+              Project: {testimonial.project}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mt-16 text-center">
+      <div class="inline-flex items-center space-x-8 text-neutral-400">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>37+ Projects Delivered</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>72-Hour Delivery</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>100% Success Rate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
