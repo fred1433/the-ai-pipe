@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const projects = [
+  {
+    id: 1,
+    title: "Voice Agent",
+    client: "Wonderful AI",
+    description: "Real-time voice assistant using LiveKit orchestration with ChatGPT for natural language processing, Deepgram Nova for speech-to-text, and ElevenLabs for text-to-speech synthesis.",
+    tech: ["LiveKit", "ChatGPT", "Deepgram", "ElevenLabs", "WebRTC"],
+    impact: "90% reduction in response latency",
+    image: "/images/portfolio/voice-agent.jpg"
+  },
+  {
+    id: 2,
+    title: "Legal Document Generation",
+    client: "US Law Firm",
+    description: "Automated pipeline transforming attorney intake forms into high-quality, correctly formatted legal documents using ChatGPT with custom prompts and validation layers.",
+    tech: ["ChatGPT", "Python", "Document AI", "API Integration"],
+    impact: "75% faster document creation",
+    image: "/images/portfolio/legal-docs.jpg"
+  },
+  {
+    id: 3,
+    title: "Alchemy Ads",
+    client: "Marketing Research Platform",
+    description: "Multi-source research aggregator across TikTok, Facebook, and Reddit. Consolidates insights, performs reasoning analysis, then auto-generates briefs, reports, and marketing visuals.",
+    tech: ["Social APIs", "LLM Analysis", "DALL-E", "Data Pipeline"],
+    impact: "10x faster market research",
+    image: "/images/portfolio/alchemy-ads.jpg"
+  },
+  {
+    id: 4,
+    title: "Clinical Notes Mining",
+    client: "Healthcare Provider",
+    description: "NLP system parsing thousands of physician notes, extracting medications, conditions, and follow-ups for longitudinal patient tracking and analytics.",
+    tech: ["NLP", "Medical NER", "Python", "Healthcare APIs"],
+    impact: "95% accuracy in data extraction",
+    image: "/images/portfolio/clinical-notes.jpg"
+  },
+  {
+    id: 5,
+    title: "Smart Inventory Automation",
+    client: "Paris Fashion Brand",
+    description: "Intelligent connectors with LLM-assisted rules to sync stock across channels, flag anomalies, and streamline inventory updates across multiple platforms.",
+    tech: ["API Connectors", "LLM Rules Engine", "Real-time Sync", "Shopify"],
+    impact: "60% reduction in stock discrepancies",
+    image: "/images/portfolio/inventory-automation.jpg"
+  }
+];
+---
+
+<Layout 
+  title="Portfolio | AI Automation Projects - The AI Pipe"
+  description="Explore my recent AI automation projects: voice agents, document generation, marketing research, healthcare NLP, and inventory automation. Real results for real businesses."
+  keywords="AI portfolio, automation projects, voice AI, document automation, NLP healthcare, inventory automation, LLM integration">
+  
+  <div class="container mx-auto max-w-screen-xl px-4 py-32">
+    <!-- Hero Section -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+        Recent Projects
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-neutral-300">
+        Real-world AI automation solutions delivering measurable business impact. From voice agents to document generation, see how I transform complex workflows into intelligent systems.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="space-y-32">
+      {projects.map((project, index) => (
+        <div class={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <!-- Image Section -->
+          <div class="lg:w-1/2">
+            <div class="relative group">
+              <div class="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+              <div class="relative bg-neutral-800 rounded-lg overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={`${project.title} architecture diagram`}
+                  class="w-full h-auto object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div class="lg:w-1/2 space-y-6">
+            <div>
+              <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider">
+                {project.client}
+              </h3>
+              <h2 class="mt-2 text-3xl font-bold text-white">
+                {project.title}
+              </h2>
+            </div>
+
+            <p class="text-lg text-neutral-300">
+              {project.description}
+            </p>
+
+            <!-- Tech Stack -->
+            <div class="flex flex-wrap gap-2">
+              {project.tech.map(tech => (
+                <span class="px-3 py-1 text-xs font-medium bg-neutral-800 text-indigo-400 rounded-full border border-neutral-700">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <!-- Impact -->
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              <span class="text-green-400 font-semibold">{project.impact}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-32 text-center">
+      <div class="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-2xl p-12">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Ready to Transform Your Business?
+        </h2>
+        <p class="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+          Let's discuss how AI automation can streamline your workflows and accelerate your growth.
+        </p>
+        <Button href="/contact" size="large">
+          Start Your Project
+        </Button>
+      </div>
+    </div>
+  </div>
+</Layout>
