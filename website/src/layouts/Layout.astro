@@ -18,6 +18,24 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://theaipipe.com');
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	"name": "The AI Pipe",
+	"description": "AI automation expert helping businesses streamline processes with custom AI solutions",
+	"url": "https://theaipipe.com",
+	"logo": "https://theaipipe.com/favicon.svg",
+	"founder": {
+		"@type": "Person",
+		"name": "Frédéric",
+		"jobTitle": "AI & Automation Expert"
+	},
+	"areaServed": "Worldwide",
+	"serviceType": ["AI Integration", "Business Process Automation", "Custom AI Solutions"],
+	"priceRange": "$$",
+	"sameAs": []
+};
 ---
 
 <!doctype html>
@@ -53,25 +71,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://theaipip
 		<title>{title}</title>
 		
 		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "ProfessionalService",
-				"name": "The AI Pipe",
-				"description": "AI automation expert helping businesses streamline processes with custom AI solutions",
-				"url": "https://theaipipe.com",
-				"logo": "https://theaipipe.com/favicon.svg",
-				"founder": {
-					"@type": "Person",
-					"name": "Frédéric",
-					"jobTitle": "AI & Automation Expert"
-				},
-				"areaServed": "Worldwide",
-				"serviceType": ["AI Integration", "Business Process Automation", "Custom AI Solutions"],
-				"priceRange": "$$",
-				"sameAs": []
-			})}
-		</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body class="bg-neutral-900 text-neutral-100">
     <Header />
